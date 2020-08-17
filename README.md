@@ -21,22 +21,23 @@
 
 ## items テーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| image         | text    | null: false |
-| name          | string  | null: false |
-| product       | text    | null: false |
-| category      | integer | null: false |
-| status        | integer | null: false |
-| delivery_fee  | integer | null: false |
-| delivery_area | integer | null: false |
-| delivery_days | integer | null: false |
-| price         | integer | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| user_id       | references | null: false, foreign_key: true |
+| image         | string     | null: false                    |
+| name          | string     | null: false                    |
+| product       | text       | null: false                    |
+| category      | integer    | null: false                    |
+| status        | integer    | null: false                    |
+| delivery_fee  | integer    | null: false                    |
+| delivery_area | integer    | null: false                    |
+| delivery_days | integer    | null: false                    |
+| price         | integer    | null: false                    |
 
 ### Association
 
 - belongs_to :user
-- has_one :bougth_items
+- has_one :bougth_item
 
 
 ## bought_items テーブル
@@ -50,14 +51,14 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_ons : delivery_adresses
+- has_one : delivery_adress
 
 
 ## delivery_adresses テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| bought_item_id | references | null: false, foreign_key: true |
+| bought_item    | references | null: false, foreign_key: true |
 | zip_code       | string     | null: false                    |
 | prefecture     | integer    | null: false                    |
 | city           | string     | null: false                    |
