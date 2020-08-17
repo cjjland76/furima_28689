@@ -11,13 +11,12 @@
 | first_name      | string | null: false |
 | last_name_kana  | string | null: false |
 | first_name_kana | string | null: false |
-| birthday        | string | null: false |
+| birthday        | date   | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :bought_items
-- has_many :delivery_adresses
 
 
 ## items テーブル
@@ -25,8 +24,8 @@
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
 | image         | text    | null: false |
-| item_name     | string  | null: false |
-| product       | string  | null: false |
+| name          | string  | null: false |
+| product       | text    | null: false |
 | category      | integer | null: false |
 | status        | integer | null: false |
 | delivery_fee  | integer | null: false |
@@ -37,37 +36,39 @@
 ### Association
 
 - belongs_to :user
+- has_one :bougth_items
 
 
 ## bought_items テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :item
+- has_ons : delivery_adresses
 
 
 ## delivery_adresses テーブル
 
-| Column  |      Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| user_id      | references | null: false, foreign_key: true |
-| item_id      | references | null: false, foreign_key: true |
-| zip_code     | integer    | null: false                    |
-| prefecture   | integer    | null: false                    |
-| city         | string     | null: false                    |
-| adress1      | string     | null: false                    |
-| adress2      | string     | null: false                    |
-| phone_number | integer    | null: false                    |
-
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| bought_item_id | references | null: false, foreign_key: true |
+| zip_code       | string     | null: false                    |
+| prefecture     | integer    | null: false                    |
+| city           | string     | null: false                    |
+| adress1        | string     | null: false                    |
+| adress2        | string     | null: false                    |
+| phone_number   | string     | null: false                    |
 
 ### Association
 
-- belongs_to :user
+- belongs_to :bought_item
+
 
 
 <!-- ## comments テーブル
