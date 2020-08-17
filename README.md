@@ -23,7 +23,7 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| user_id       | references | null: false, foreign_key: true |
+| user          | references | null: false, foreign_key: true |
 | image         | string     | null: false                    |
 | name          | string     | null: false                    |
 | product       | text       | null: false                    |
