@@ -80,7 +80,7 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("First name kana is invalid. Input full-width katakana characters.")
     end
-
+    
     it 'passwordが半角英数では登録できない' do
       @user.password = '111111'
       @user.valid?
@@ -90,6 +90,16 @@ RSpec.describe User, type: :model do
       @user.email = 'user.com'
       @user.valid?
       expect(@user.errors.full_messages).to include("Email is invalid")
+    end
+    it 'last_nameが全角ではないと登録できない' do
+      @user.last_name = 'aa11'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name is invalid. Input full-width characters.")
+    end
+    it 'first_nameが全角ではないと登録できない' do
+      @user.first_name = 'aa11'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
     end
   end
 end

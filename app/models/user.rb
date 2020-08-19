@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
     validates :nickname
     validates :email
-    validates :password, format: { with: password_REGEX, message: 'is invald. ' }, length: { minimum: 6 }
+    validates :password, format: { with: password_REGEX, message: 'is invald. Input half-width characters.' }
     validates :last_name, format: { with: name_REGEX, message: 'is invalid. Input full-width characters.' }
     validates :first_name, format: { with: name_REGEX, message: 'is invalid. Input full-width characters.' }
     validates :last_name_kana, format: { with: name_kana_REGEX, message: 'is invalid. Input full-width katakana characters.' }
