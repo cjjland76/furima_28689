@@ -8,7 +8,7 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.integer :status, null: false
       t.integer :delivery_ree, null: false
       t.integer :delivery_area, null: false
-      t.integer :delivery_days, null: false
+      t.integer :delivery_day, null: false
 
       t.timestamps
     end

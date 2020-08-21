@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
+    @item = Item.create(item_params)
   end
 
   def show
@@ -21,14 +21,6 @@ class ItemsController < ApplicationController
 
   def price
     item = Item.find(params[:id])
-    if item.price
-      item.update(price: false)
-    else
-      item.update(price: true)
-    end
-
-    item = Item.find(params[:id])
-    render json: { post: item }
   end
 
   private
@@ -38,8 +30,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:image, :item_name, :product)
+    params.require(:item).permit(:image, :item_name, :product, :category, :status, :delivery_fee, :delivery_area, :delivery_day, :price).merge(user_id: current_user.id)
   end
 end
 
-# params.require(:item).permit(:image, :item_name, :product, :category, :status, :delivery_fee, :delivery_area, :delivery_days, :price)
