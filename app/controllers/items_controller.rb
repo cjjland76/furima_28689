@@ -19,6 +19,18 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def price
+    item = Item.find(params[:id])
+    if item.price
+      item.update(price: false)
+    else
+      item.update(price: true)
+    end
+
+    item = Item.find(params[:id])
+    render json: { post: item }
+  end
+
   private
 
   def move_to_index
