@@ -13,12 +13,10 @@ class Item < ApplicationRecord
     validates :delivery_fee
     validates :delivery_area
     validates :delivery_day
-    validates :price, format: { with: price_REGEX },numericality: { only_integer: true, greater_than: 300, less_than: 9999999 }
+    validates :price, format: { with: price_REGEX }, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
   end
 
   def was_attached?
-    self.image.attached?
+    image.attached?
   end
-
 end
-

@@ -36,11 +36,11 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
 
-    it "重複したemailが存在する場合登録できないこと" do
+    it '重複したemailが存在する場合登録できないこと' do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
       another_user.valid?
-      expect(another_user.errors.full_messages).to include("Email has already been taken")
+      expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
     it 'birthdayが空では登録できない' do
       @user.birthday = ''
@@ -73,14 +73,14 @@ RSpec.describe User, type: :model do
     it 'last_name_kanaが全角カタカナではないと登録できない' do
       @user.last_name_kana = 'kana'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name kana is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include('Last name kana is invalid. Input full-width katakana characters.')
     end
     it 'first_name_kanaが全角カタカナではないと登録できない' do
       @user.first_name_kana = 'kana'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name kana is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include('First name kana is invalid. Input full-width katakana characters.')
     end
-    
+
     it 'passwordが半角英数では登録できない' do
       @user.password = '111111'
       @user.valid?
@@ -89,17 +89,17 @@ RSpec.describe User, type: :model do
     it '@をつけないと登録できない' do
       @user.email = 'user.com'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Email is invalid")
+      expect(@user.errors.full_messages).to include('Email is invalid')
     end
     it 'last_nameが全角ではないと登録できない' do
       @user.last_name = 'aa11'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name is invalid. Input full-width characters.")
+      expect(@user.errors.full_messages).to include('Last name is invalid. Input full-width characters.')
     end
     it 'first_nameが全角ではないと登録できない' do
       @user.first_name = 'aa11'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
+      expect(@user.errors.full_messages).to include('First name is invalid. Input full-width characters.')
     end
   end
 end

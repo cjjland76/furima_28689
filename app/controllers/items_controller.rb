@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:edit, :price]
+
   def index
     @items = Item.all
   end
@@ -9,13 +11,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def create
     @item = Item.create(item_params)
     if @item.save
-    redirect_to root_path
+      redirect_to root_path
     else
       render :new
     end
@@ -25,7 +26,6 @@ class ItemsController < ApplicationController
   end
 
   def price
-    item = Item.find(params[:id])
   end
 
   private
@@ -37,5 +37,8 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :item_name, :product, :category, :status, :delivery_fee, :delivery_area, :delivery_day, :price).merge(user_id: current_user.id)
   end
-end
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
+end

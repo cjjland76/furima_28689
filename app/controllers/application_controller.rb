@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
     new_item_path(resource)
   end
 
-
   private
 
   def configure_permitted_parameters

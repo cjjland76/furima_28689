@@ -4,5 +4,5 @@ class Article < ApplicationRecord
 
   validates :category, :status, :delivery_fee, :delivery_area, :delivery_day, presence: true
 
-  validates :category, :status, :delivery_fee, :delivery_area, :delivery_day, numericality: { other_than: 1 } 
+  validates :category, :status, :delivery_fee, :delivery_area, :delivery_day, numericality: { other_than: 1 }
 end
