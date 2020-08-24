@@ -28,6 +28,13 @@ class ItemsController < ApplicationController
   def price
   end
 
+  def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+    redirect_to root_path
+    
+  end
+
   private
 
   def move_to_index
