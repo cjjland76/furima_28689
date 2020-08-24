@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_073402) do
+ActiveRecord::Schema.define(version: 2020_08_23_093116) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -46,9 +46,17 @@ ActiveRecord::Schema.define(version: 2020_08_21_073402) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "bought_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_bought_items_on_item_id"
+    t.index ["user_id"], name: "index_bought_items_on_user_id"
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.text "image"
     t.string "item_name"
     t.string "product"
     t.integer "category"
@@ -81,5 +89,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_073402) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bought_items", "items"
+  add_foreign_key "bought_items", "users"
   add_foreign_key "items", "users"
 end
