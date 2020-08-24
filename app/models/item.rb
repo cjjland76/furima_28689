@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_one :bougth_item
 
   with_options presence: true do
     price_REGEX = /\A[0-9]+\z/.freeze
