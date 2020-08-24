@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 2020_08_23_093116) do
     t.string "image", null: false
     t.string "item_name", null: false
     t.text "product", null: false
-    t.integer "category", null: false
-    t.integer "status", null: false
-    t.integer "delivery_ree", null: false
-    t.integer "delivery_area", null: false
-    t.integer "delivery_day", null: false
+    t.integer "category_id", null: false
+    t.integer "status_id", null: false
+    t.integer "delivery_ree_id", null: false
+    t.integer "delivery_area_id", null: false
+    t.integer "delivery_day_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -59,11 +59,11 @@ ActiveRecord::Schema.define(version: 2020_08_23_093116) do
     t.bigint "user_id"
     t.string "item_name"
     t.string "product"
-    t.integer "category"
-    t.integer "status"
-    t.integer "delivery_fee"
-    t.integer "delivery_area"
-    t.integer "delivery_day"
+    t.integer "category_id"
+    t.integer "status_id"
+    t.integer "delivery_fee_id"
+    t.integer "delivery_area_id"
+    t.integer "delivery_day_id"
     t.string "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
