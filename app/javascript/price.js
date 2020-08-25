@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(e) {
     const price = document.getElementById('item-price');
-    // console.log(price)
+
     const tax_price = document.getElementById('add-tax-price');
     const profit_price = document.getElementById('profit');
-
+    console.log(price)
 
     price.addEventListener('keyup', function() {
         let input_price = price.value;

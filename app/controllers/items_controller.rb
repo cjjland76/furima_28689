@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
@@ -29,11 +29,10 @@ class ItemsController < ApplicationController
   end
   
   def update
-    @item.update(item_params)
-    if @item.save
-    redirect_to root_path
+    if @item.update(item_params)
+      redirect_to root_path
     else
-      render :new
+      render :edit
     end
   end
 
