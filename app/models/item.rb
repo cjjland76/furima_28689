@@ -15,11 +15,11 @@ class Item < ApplicationRecord
 
     validates :item_name
     validates :product
-    validates :category_id
-    validates :status_id
-    validates :delivery_fee_id
-    validates :delivery_area_id
-    validates :delivery_day_id
+    # validates :category_id
+    # validates :status_id
+    # validates :delivery_fee_id
+    # validates :delivery_area_id
+    # validates :delivery_day_id
     validates :price, format: { with: price_REGEX }, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
   end
 
