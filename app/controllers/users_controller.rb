@@ -4,5 +4,4 @@ class UsersController < ApplicationController
     @nickname = user.nickname
     @items = user.items
   end
-
 end
