@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     const tax_price = document.getElementById('add-tax-price');
     const profit_price = document.getElementById('profit');
 
+
     price.addEventListener('keyup', function() {
         let input_price = price.value;
         let fee = input_price / 10;
