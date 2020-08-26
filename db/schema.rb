@@ -46,17 +46,8 @@ ActiveRecord::Schema.define(version: 2020_08_26_024725) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "bought_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_bought_items_on_item_id"
-    t.index ["user_id"], name: "index_bought_items_on_user_id"
-  end
-
   create_table "delivery_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "bought_item_id", null: false
+    t.bigint "item_id", null: false
     t.string "zip_code"
     t.integer "prefecture"
     t.string "city"
@@ -65,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_024725) do
     t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bought_item_id"], name: "index_delivery_addresses_on_bought_item_id"
+    t.index ["item_id"], name: "index_delivery_addresses_on_item_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,8 +75,12 @@ ActiveRecord::Schema.define(version: 2020_08_26_024725) do
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,8 +102,8 @@ ActiveRecord::Schema.define(version: 2020_08_26_024725) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bought_items", "items"
-  add_foreign_key "bought_items", "users"
-  add_foreign_key "delivery_addresses", "bought_items"
+  add_foreign_key "delivery_addresses", "items"
   add_foreign_key "items", "users"
+  add_foreign_key "orders", "items"
+  add_foreign_key "orders", "users"
 end
