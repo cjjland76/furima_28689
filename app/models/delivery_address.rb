@@ -8,7 +8,6 @@ class DeliveryAddress < ApplicationRecord
     validates :prefecture
     validates :city
     validates :address1
-    validates :address2
     validates :phone_number
   end
 end
