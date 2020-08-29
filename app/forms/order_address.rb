@@ -7,7 +7,7 @@ class OrderAddress
   zip_REGEX = /\A[0-9]{3}-[0-9]{4}\z/.freeze
 
   with_options presence: true do
- 
+    validates :token
     validates :zip_code, format: {with: zip_REGEX, message: "is invalid. Include hyphen(-)"}
     validates :prefecture
     validates :city

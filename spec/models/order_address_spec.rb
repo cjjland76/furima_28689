@@ -41,6 +41,11 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Zip code is invalid. Include hyphen(-)")
     end
+    it 'カード情報を入れないと購入できない' do
+      @order_address.token = ''
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Token can't be blank")
+    end
 
   end
 end
