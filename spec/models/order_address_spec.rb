@@ -6,6 +6,10 @@ RSpec.describe OrderAddress, type: :model do
       @order_address = FactoryBot.build(:order_address)
     end
 
+    it "address2が空でも登録できる" do
+      @order_address.address2 = ''
+      expect(@order_address).to be_valid
+    end
     it "cityが存在すれば登録できる" do
       @order_address.city = '横浜市'
       expect(@order_address).to be_valid
