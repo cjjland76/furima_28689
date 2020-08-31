@@ -5,7 +5,27 @@ RSpec.describe OrderAddress, type: :model do
     before do
       @order_address = FactoryBot.build(:order_address)
     end
-    
+
+    it "cityが存在すれば登録できる" do
+      @order_address.city = '横浜市'
+      expect(@order_address).to be_valid
+    end
+    it "zip_codeが正常であれば登録できる" do
+      @order_address.zip_code = '123-4567'
+      expect(@order_address).to be_valid
+    end
+    it "prefectureが存在すれば登録できる" do
+      @order_address.prefecture = '東京都'
+      expect(@order_address).to be_valid
+    end
+    it "address1が存在すれば登録できる" do
+      @order_address.address1 = '1-1'
+      expect(@order_address).to be_valid
+    end
+    it "phone_numberが存在すれば登録できる" do
+      @order_address.phone_number = '09012345678'
+      expect(@order_address).to be_valid
+    end
     it 'zip_codeが空だと購入できない' do
       @order_address.zip_code = ''
       @order_address.valid?
@@ -46,6 +66,5 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Token can't be blank")
     end
-
   end
 end
