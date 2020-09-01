@@ -23,5 +23,7 @@ class Item < ApplicationRecord
     validates :price, format: { with: price_REGEX }, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
   end
 
- 
+  def was_attached?
+    image.attached?
+  end
 end
