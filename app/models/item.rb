@@ -1,9 +1,9 @@
 class Item < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_one_attached :image
   has_one :order
-
+  
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :status
   belongs_to_active_hash :delivery_fee
@@ -12,7 +12,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     price_REGEX = /\A[0-9]+\z/.freeze
-
+    validates :image
     validates :item_name
     validates :product
     # validates :category_id
@@ -23,7 +23,5 @@ class Item < ApplicationRecord
     validates :price, format: { with: price_REGEX }, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
   end
 
-  def was_attached?
-    image.attached?
-  end
+ 
 end
