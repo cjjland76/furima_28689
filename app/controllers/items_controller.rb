@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
   before_action :set_item, only: [:edit, :price, :show, :update, :destroy]
 
   def index
@@ -23,6 +23,10 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
   end
   
   def price
