@@ -1,13 +1,10 @@
 <%= render "shared/header" %>
-<div>
- 
-</div>
-<div class="item-show">出品一覧
-<div class='item-contents'>
 
+<div class="item-show">出品一覧
+  <div class='item-contents'>
     <ul class='item-lists'>  
-<% if user_signed_in? && current_user.id == @item.user_id %>
-   <% @items.each do |item| %>
+    <% if user_signed_in? %>
+      <% @items.each do |item| %>
         <li class='list'>
           <%= link_to item_path(item.id) do %>
             <div class='item-img-content'>
@@ -37,10 +34,10 @@
           <% end %>
         </li>
       <% end %>
-      <% end %>
-        </ul>
+    <% end %>
+    </ul>
   </div>
-  </div>
+</div>
 <br>
 
 
