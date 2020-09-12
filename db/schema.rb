@@ -71,9 +71,11 @@ ActiveRecord::Schema.define(version: 2020_08_26_024020) do
     t.integer "delivery_area_id"
     t.integer "delivery_day_id"
     t.string "price"
+    t.integer "view_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["view_count"], name: "index_items_on_view_count"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

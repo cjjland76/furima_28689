@@ -10,8 +10,10 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :delivery_area_id
       t.integer :delivery_day_id
       t.string :price
+      t.integer :view_count
       
       t.timestamps
     end
+    add_index :items, :view_count
   end
 end

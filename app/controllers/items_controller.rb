@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item.increment!(:view_count)
   end
 
   def search
