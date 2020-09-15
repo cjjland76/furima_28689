@@ -24,6 +24,8 @@ class ItemsController < ApplicationController
 
   def show
     @item.increment!(:view_count)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def search
