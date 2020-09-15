@@ -18,7 +18,7 @@
         <%= comment.text %>
       </p>
          <span class="font-italic">　　▶︎ <%= time_ago_in_words comment.created_at %></span>
-        　<%= link_to "削除", item_comment_path(comment.item.id, comment.id), method: :delete %><br><br>
+        　<%= link_to "削除", item_comment_path(comment.item.id, comment.id), method: :delete, data: {confirm: "削除しますか？"} if current_user && (current_user == comment.user)  %><br><br>
     <% end %>
   <% end %>
 </div>
