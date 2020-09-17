@@ -90,6 +90,11 @@ a {
     position: relative;
 }
 
+.list-shadow {
+    box-shadow: 2px 4px 4px;
+    margin: 10px 10px;
+}
+
 .list-pict {
     margin-bottom: 20px;
     width: 100%;
@@ -121,6 +126,7 @@ a {
 .reason-list-description {
     font-size: 18px;
     margin-top: 20px;
+    padding: 10px;
 }
 
 
