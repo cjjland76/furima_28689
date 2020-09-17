@@ -5,7 +5,7 @@
     <ul class='item-lists'>  
     <% if user_signed_in? %>
       <% @items.each do |item| %>
-        <li class='list'>
+        <li class='list list-shadow'>
           <%= link_to item_path(item.id) do %>
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
